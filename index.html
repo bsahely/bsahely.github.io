@@ -107,7 +107,7 @@
     }
 
     /* ============================================================
-       HERO SECTION
+       HERO SECTION — wide two-column layout
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -115,28 +115,41 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
+      padding: 6rem 3rem 8rem;
       position: relative;
       overflow: hidden;
     }
 
-    /* Subtle background texture */
+    /* Decorative glow */
     #hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(56,178,172,0.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 75% 50%, rgba(56,178,172,0.13) 0%, transparent 55%);
     }
 
-    .hero-content { position: relative; max-width: 760px; }
+    /* Two-column wrapper — text left, panel right */
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* LEFT: text block */
+    .hero-content {
+      text-align: left;
+    }
 
     .hero-tag {
       display: inline-block;
       background: rgba(56,178,172,0.15);
       border: 1px solid rgba(56,178,172,0.35);
       color: var(--teal-light);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -146,36 +159,36 @@
     }
 
     .hero-content h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
       color: var(--white);
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero-content h1 span { color: var(--teal); }
 
     .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: 1.05rem;
       color: #A0AEC0;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
+      margin-bottom: 2.5rem;
       font-weight: 300;
+      line-height: 1.7;
+      max-width: 480px;
     }
 
     .hero-cta {
       display: flex;
-      gap: 1rem;
-      justify-content: center;
+      gap: 0.85rem;
       flex-wrap: wrap;
     }
 
     .btn-primary {
       background: var(--teal);
       color: var(--white);
-      padding: 0.85rem 2rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 6px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: background 0.2s, transform 0.15s;
       box-shadow: 0 4px 15px rgba(56,178,172,0.3);
     }
@@ -184,14 +197,111 @@
     .btn-secondary {
       background: transparent;
       color: var(--white);
-      padding: 0.85rem 2rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 6px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       border: 2px solid rgba(255,255,255,0.3);
       transition: border-color 0.2s, transform 0.15s;
     }
     .btn-secondary:hover { border-color: var(--teal); transform: translateY(-2px); }
+
+    /* Resume button */
+    .btn-resume {
+      background: transparent;
+      color: var(--teal-light);
+      padding: 0.85rem 1.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 2px solid rgba(129,230,217,0.4);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-resume:hover {
+      background: rgba(56,178,172,0.12);
+      border-color: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    /* RIGHT: stats panel */
+    .hero-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Each stat row in the right panel */
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(56,178,172,0.2);
+      border-left: 4px solid var(--teal);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: background 0.2s;
+    }
+    .hero-stat:hover { background: rgba(56,178,172,0.07); }
+
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--teal);
+      line-height: 1;
+      min-width: 80px;
+    }
+
+    .hero-stat-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hero-stat-sub {
+      font-size: 0.75rem;
+      color: #718096;
+    }
+
+    /* A small "what I do" tag row */
+    .hero-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .hero-mini-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--teal-light);
+      background: rgba(56,178,172,0.1);
+      border: 1px solid rgba(56,178,172,0.25);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    /* Mobile: stack hero columns */
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+      .hero-content { text-align: center; }
+      .hero-subtitle { max-width: 100%; }
+      .hero-cta { justify-content: center; }
+      .hero-tags-row { justify-content: center; }
+    }
 
     /* Scroll indicator */
     .scroll-hint {
@@ -207,6 +317,7 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
+      pointer-events: none; /* so it never blocks clicks on buttons */
     }
     .scroll-hint::after {
       content: '';
@@ -254,23 +365,88 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
+      grid-template-columns: 280px 1fr; /* left col fixed, right col fills rest */
+      gap: 3rem;
       align-items: start;
     }
 
+    /* Left column wrapper — holds photo + all tags stacked */
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
     .about-photo-placeholder {
-      aspect-ratio: 1;
+      width: 280px;
+      height: 280px;
       background: linear-gradient(135deg, var(--charcoal) 0%, var(--teal-dark) 100%);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: rgba(255,255,255,0.4);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-align: center;
       padding: 1rem;
       line-height: 1.5;
+    }
+
+    /* Tag group label */
+    .about-tag-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .about-tag-group-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.1rem;
+    }
+
+    /* Button-style tag row */
+    .about-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* Industry tags — solid teal-tinted button look */
+    .industry-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      background: var(--white);
+      border: 1.5px solid var(--teal);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px; /* button shape, not pill */
+      letter-spacing: 0.2px;
+      transition: all 0.2s;
+    }
+    .industry-tag:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* Domain tags — darker filled look to differentiate */
+    .domain-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--teal-dark);
+      border: 1.5px solid var(--teal-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      letter-spacing: 0.2px;
+      transition: all 0.2s;
+    }
+    .domain-tag:hover {
+      background: var(--teal);
+      border-color: var(--teal);
     }
 
     .about-text p {
@@ -279,36 +455,61 @@
       font-size: 1.05rem;
     }
 
+    /* ============================================================
+       ABOUT HIGHLIGHTS — FIX: CSS now matches the HTML class names
+       (.highlight-item / .highlight-number / .highlight-label)
+    ============================================================ */
     .about-highlights {
       display: flex;
-      gap: 2rem;
+      flex-direction: row;        /* forces side-by-side — never stacks on desktop */
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
       margin-top: 2rem;
-      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 2px solid #E2E8F0;
+      flex-wrap: nowrap;
     }
 
-    .highlight-stat {
+    /* Each stat block */
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 1.25rem 1.5rem;
+      flex: 1;
+      padding: 1.25rem 1rem;
       background: var(--white);
       border-radius: 10px;
       border-top: 3px solid var(--teal);
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      flex: 1;
-      min-width: 100px;
+      min-width: 0; /* prevents overflow */
     }
 
-    .highlight-stat .number {
+    /* The big number — 11+, 290+, ~$2.5M */
+    .highlight-number {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
+      font-weight: 700;
       color: var(--teal-dark);
-      line-height: 1;
+      line-height: 1.1;
     }
 
-    .highlight-stat .label {
+    /* The label below the number */
+    .highlight-label {
       font-size: 0.78rem;
       color: var(--text-light);
-      margin-top: 4px;
+      margin-top: 0.4rem;
       font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* On mobile only — allow stacking */
+    @media (max-width: 480px) {
+      .about-highlights {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
 
     /* ============================================================
@@ -414,8 +615,6 @@
       line-height: 1.3;
     }
 
-    .card-body { padding: 1.5rem; flex: 1; }
-
     .card-meta {
       display: flex;
       gap: 1rem;
@@ -448,28 +647,8 @@
       font-weight: 500;
     }
 
-    .card-footer {
-      padding: 1.25rem 1.5rem;
-      border-top: 1px solid var(--bg-section);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-link {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--teal);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: gap 0.2s;
-    }
-    .card-link:hover { gap: 8px; }
-
     /* ============================================================
        COLLAPSIBLE CARD BODY
-       .card-body is hidden by default, shown when .is-open is added
     ============================================================ */
     .card-body {
       padding: 0 1.5rem;
@@ -481,10 +660,9 @@
 
     .project-card.is-open .card-body {
       padding: 1.5rem;
-      max-height: 400px; /* large enough for any content */
+      max-height: 400px;
     }
 
-    /* Toggle button row — sits between header and body */
     .card-toggle {
       display: flex;
       align-items: center;
@@ -511,16 +689,25 @@
     }
     .project-card.is-open .toggle-arrow { transform: rotate(180deg); }
 
-    /* Footer only visible when card is open */
     .card-footer {
       padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--bg-section);
-      display: flex;
+      display: none;
       justify-content: space-between;
       align-items: center;
-      display: none; /* hidden by default */
     }
     .project-card.is-open .card-footer { display: flex; }
+
+    .card-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 8px; }
 
     /* ============================================================
        WRITING PREVIEW SECTION
@@ -692,9 +879,18 @@
         gap: 2rem;
       }
 
+      .about-left {
+        align-items: center; /* centre photo and tags on mobile */
+      }
+
       .about-photo-placeholder {
-        max-width: 220px;
+        width: 220px;
+        height: 220px;
         margin: 0 auto;
+      }
+
+      .about-industry-tags {
+        width: 100%;
       }
 
       .about-highlights { gap: 1rem; }
@@ -734,18 +930,67 @@
        SECTION 1: HERO
   ============================================================ -->
   <section id="hero">
-    <div class="hero-content">
-      <span class="hero-tag"> The Rev Ops & Finance BA </span>
-      <h1>Hi, I'm <span>Sahely Banerjee</span>.<br/>I turn complexity<br/>into clarity.</h1>
-      <p class="hero-subtitle">
-        I bridge the gap between business needs and technical solutions —
-        crafting solutions that Business actually drives value. I also config SKUs, build Invoice workflows and debug Revenue issues for fun
-      </p>
-      <div class="hero-cta">
-        <a href="#portfolio" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-secondary">Get In Touch</a>
+    <!-- Two-column layout: text left, stats panel right -->
+    <div class="hero-inner">
+
+      <!-- LEFT: name, tagline, buttons -->
+      <div class="hero-content">
+        <span class="hero-tag">RevOps · Salesforce · BA/PO</span>
+        <h1>Hi, I'm <span>Sahely Banerjee</span>.<br/>I turn complexity<br/>into clarity.</h1>
+        <p class="hero-subtitle">
+          Senior Technical BA & RevOps PO — I config CPQ, fix Salesforce Flows,
+          debug invoice sync failures at 2am, and ship things that move the needle.
+        </p>
+        <div class="hero-cta">
+          <a href="#portfolio" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
+          <a href="resume.pdf" target="_blank" class="btn-resume">My Resume</a>
+        </div>
       </div>
-    </div>
+
+      <!-- RIGHT: 3 stat cards + specialty tags -->
+      <div class="hero-panel">
+
+        <div class="hero-stat">
+          <span class="hero-stat-num">11+</span>
+          <div class="hero-stat-text">
+            <span class="hero-stat-label">Years of Enterprise Experience</span>
+            <span class="hero-stat-sub">SaaS · Fintech · Telco · Software</span>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="hero-stat-num">290+</span>
+          <div class="hero-stat-text">
+            <span class="hero-stat-label">Invoice Sync Issues Resolved</span>
+            <span class="hero-stat-sub">Salesforce ↔ Billing platform diagnostics</span>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="hero-stat-num">~$2.5M</span>
+          <div class="hero-stat-text">
+            <span class="hero-stat-label">Business Impact Delivered</span>
+            <span class="hero-stat-sub">Agentic AI · RevOps · CRM Migrations</span>
+          </div>
+        </div>
+
+        <!-- Specialty tags -->
+        <div class="hero-tags-row">
+          <span class="hero-mini-tag">Salesforce</span>
+          <span class="hero-mini-tag">CPQ</span>
+          <span class="hero-mini-tag">Workato</span>
+          <span class="hero-mini-tag">Snowflake</span>
+          <span class="hero-mini-tag">Gainsight</span>
+          <span class="hero-mini-tag">Agentic AI</span>
+          <span class="hero-mini-tag">Gong</span>
+          <span class="hero-mini-tag">Zoominfo</span>
+        </div>
+
+      </div><!-- end hero-panel -->
+
+    </div><!-- end hero-inner -->
+    <!-- Scroll hint sits below all content -->
     <div class="scroll-hint">Scroll</div>
   </section>
 
@@ -760,87 +1005,95 @@
 
       <div class="about-grid">
 
-        <!-- Photo placeholder — replace src with images/photo.jpg when ready -->
-        <div class="about-photo-placeholder">
-          📸 Replace with<br/>your headshot<br/><br/><small>images/photo.jpg</small>
-        </div>
+        <!-- LEFT COLUMN: photo + tags stacked -->
+        <div class="about-left">
 
-        <div class="about-text">
-         <!-- About Me - Paragraph 1: The hook / who I really am -->
-<p>
-  I'm a Senior Technical Business Analyst and RevOps Product Owner with 11+ years 
-  of experience working where enterprise complexity lives — SaaS, Fintech, Software 
-  Products, Telco — industries where the margin for ambiguity isn't just low, 
-  it's professionally dangerous.
-</p>
-
-<!-- Paragraph 2: The 2am moment — lead with the story, not the job title -->
-<p>
-  My favourite kind of problem? The one nobody else wants to touch. 
-  I've spent a Tuesday night at 2am untangling a 290+ invoice sync failure between 
-  Salesforce and a Billing platform — not because I was asked to, but because I 
-  needed to understand <em>why</em> it broke, not just that it did. 
-  That instinct — to go deeper, pull the thread, follow the data — is what 
-  separates a discovery session from a real diagnosis.
-</p>
-
-<!-- Paragraph 3: The Salesforce ecosystem depth — CPQ, flows, hands-on config -->
-<p>
-  I live inside the Salesforce ecosystem: Sales Cloud, Service Cloud, CPQ, 
-  Agentforce. But living in it means more than knowing the landscape — 
-  I configure CPQ product rules and pricing logic myself, debug and fix 
-  broken Flows without waiting on a developer, stand up Gong Playbooks 
-  from scratch, and run the kind of M&amp;A discovery work that lets a newly 
-  acquired business start selling/renewing through existing processes on day30. 
-  I don't just document what needs to be built. I help build it.
-</p>
-
-<!-- Paragraph 4: The business impact / AI work -->
-<p>
-  Most recently, I led Agentic AI implementations that generated ~$1M in 
-  influenced pipeline and contributed to ~$1.5M in churn reduction. 
-  Great BA/PO work doesn't support the business — it <em>moves</em> the needle.
-</p>
-
-<!-- Paragraph 5: Human / personal closer -->
-<p>
-  Based in Bengaluru. Novice swimmer. Committed binge-watcher. 
-  Serious about flat whites. I believe the best product thinking 
-  happens in real conversations — not in decks, not in standups, 
-  and almost never in a requirements document.
-</p>
-
-   <!-- ============================================
-     ABOUT HIGHLIGHTS — 3 stat/credential blocks
-     ============================================ -->
-<div class="about-highlights">
-
-  <!-- Stat 1: Years of experience -->
-  <div class="highlight-item">
-    <span class="highlight-number">11+</span>
-    <span class="highlight-label">Years of Enterprise Experience</span>
-  </div>
-
-  <!-- Stat 2: The 2am story made into a number -->
-  <div class="highlight-item">
-    <span class="highlight-number">290+</span>
-    <span class="highlight-label">Invoice Sync Issues Diagnosed & Resolved</span>
-  </div>
-
-  <!-- Stat 3: Business impact -->
-  <div class="highlight-item">
-    <span class="highlight-number">~$2.5M</span>
-    <span class="highlight-label">Business Impact Across AI & RevOps Initiatives</span>
-  </div>
-
-</div>
+          <!-- Photo placeholder — replace with <img src="images/photo.jpg"> when ready -->
+          <div class="about-photo-placeholder">
+            📸 Your<br/>headshot<br/><br/><small>images/photo.jpg</small>
           </div>
+
+          <!-- Industries worked in -->
+          <div class="about-tag-group">
+            <span class="about-tag-group-label">Industries</span>
+            <div class="about-tag-row">
+              <span class="industry-tag">Telecom</span>
+              <span class="industry-tag">Consumer Electronics</span>
+              <span class="industry-tag">Staffing</span>
+              <span class="industry-tag">Software & IT</span>
+              <span class="industry-tag">SaaS</span>
+              <span class="industry-tag">Fintech</span>
+            </div>
+          </div>
+
+          <!-- Domain expertise -->
+          <div class="about-tag-group">
+            <span class="about-tag-group-label">Domain</span>
+            <div class="about-tag-row">
+              <span class="domain-tag">Rev Ops</span>
+              <span class="domain-tag">GTM Strategy</span>
+              <span class="domain-tag">M&amp;A Discovery</span>
+              <span class="domain-tag">Q2C Design</span>
+              <span class="domain-tag">Billing &amp; Invoicing</span>
+            </div>
+          </div>
+
+        </div><!-- end about-left -->
+
+        <!-- RIGHT COLUMN: bio text -->
+        <div class="about-text">
+
+          <!-- Paragraph 1: The hook / who I really am -->
+          <p>
+            I'm a Senior Technical Business Analyst and RevOps Product Owner with 11+ years
+            of experience working where enterprise complexity lives — SaaS, Fintech, Software
+            Products, Telco — industries where the margin for ambiguity isn't just low,
+            it's professionally dangerous.
+          </p>
+
+          <!-- Paragraph 2: The 2am moment — lead with the story, not the job title -->
+          <p>
+            My favourite kind of problem? The one nobody else wants to touch.
+            I've spent a Tuesday night at 2am untangling a 290+ invoice sync failure between
+            Salesforce and a Billing platform — not because I was asked to, but because I
+            needed to understand <em>why</em> it broke, not just that it did.
+            That instinct — to go deeper, pull the thread, follow the data — is what
+            separates a discovery session from a real diagnosis.
+          </p>
+
+          <!-- Paragraph 3: The Salesforce ecosystem depth — CPQ, flows, hands-on config -->
+          <p>
+            I live inside the Salesforce ecosystem: Sales Cloud, Service Cloud, CPQ,
+            Agentforce. But living in it means more than knowing the landscape —
+            I configure CPQ product rules and pricing logic myself, debug and fix
+            broken Flows without waiting on a developer, stand up Gong Playbooks
+            from scratch, and run the kind of M&amp;A discovery work that lets a newly
+            acquired business start selling/renewing through existing processes on day 30.
+            I don't just document what needs to be built. I help build it.
+          </p>
+
+          <!-- Paragraph 4: The business impact / AI work -->
+          <p>
+            Most recently, I led Agentic AI implementations that generated ~$1M in
+            influenced pipeline and contributed to ~$1.5M in churn reduction.
+            Great BA/PO work doesn't support the business — it <em>moves</em> the needle.
+          </p>
+
+          <!-- Paragraph 5: Human / personal closer -->
+          <p>
+            Based in Bengaluru. Novice swimmer. Committed binge-watcher.
+            Serious about flat whites. I believe the best product thinking
+            happens in real conversations — not in decks, not in standups,
+            and almost never in a requirements document.
+          </p>
+
+
+
         </div><!-- end about-text -->
 
       </div><!-- end about-grid -->
     </div><!-- end section-inner -->
   </section>
-  <!-- END SECTION 2: ABOUT -->
 
   <!-- ============================================================
        SECTION 3: SKILLS
@@ -943,7 +1196,6 @@
       </div><!-- end skills-grid -->
     </div><!-- end section-inner -->
   </section>
-  <!-- END SECTION 3: SKILLS -->
 
   <!-- ============================================================
        SECTION 4: PORTFOLIO
@@ -956,13 +1208,12 @@
 
       <div class="portfolio-grid">
 
-        <!-- PROJECT CARD 1: KDA RevOps — collapsed by default, click to expand -->
+        <!-- PROJECT CARD 1 -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">Revenue Operations &amp; Data</span>
             <h3>KDA RevOps: Unified Reporting Layer</h3>
           </div>
-          <!-- Toggle button — clicking this expands/collapses the card -->
           <button class="card-toggle" aria-expanded="false">
             <span class="toggle-label">Senior BA — RevOps Lead · Quickbase</span>
             <span class="toggle-arrow">▼</span>
@@ -988,7 +1239,7 @@
           </div>
         </div>
 
-        <!-- PROJECT CARD 2: Agentic AI — collapsed by default -->
+        <!-- PROJECT CARD 2 -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">AI &amp; Agentic Innovation</span>
@@ -1019,7 +1270,7 @@
           </div>
         </div>
 
-        <!-- PROJECT CARD 3: Gainsight + Gong + Intelagree — collapsed by default -->
+        <!-- PROJECT CARD 3 -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">CRM &amp; GTM Integration</span>
@@ -1053,12 +1304,9 @@
       </div><!-- end portfolio-grid -->
     </div><!-- end section-inner -->
   </section>
-  <!-- END SECTION 4: PORTFOLIO -->
 
   <!-- ============================================================
        SECTION 4.5: WRITING PREVIEW
-       Shows 3 article snippets so visitors discover writing
-       without needing to navigate to writing.html first
   ============================================================ -->
   <section id="writing-preview">
     <div class="section-inner">
@@ -1068,7 +1316,6 @@
 
       <div class="writing-preview-grid">
 
-        <!-- Preview 1 -->
         <div class="preview-card">
           <span class="preview-type">Case Study · AI</span>
           <h3>Shipping Agentic AI: What $1M in Pipeline Actually Took</h3>
@@ -1076,7 +1323,6 @@
           <a href="writing/agentic-ai-case-study.html" class="preview-link">Read more →</a>
         </div>
 
-        <!-- Preview 2 -->
         <div class="preview-card">
           <span class="preview-type">Product Thinking</span>
           <h3>Booking.com Micro Stay: A Product Launch Strategy</h3>
@@ -1085,7 +1331,6 @@
              target="_blank" class="preview-link">Read on Medium →</a>
         </div>
 
-        <!-- Preview 3 -->
         <div class="preview-card">
           <span class="preview-type">Case Study</span>
           <h3>ParkMobile: Rethinking Urban Parking Through Product Strategy</h3>
@@ -1101,7 +1346,6 @@
 
     </div>
   </section>
-  <!-- END SECTION 4.5: WRITING PREVIEW -->
 
   <!-- ============================================================
        SECTION 5: CONTACT
@@ -1117,7 +1361,7 @@
       </p>
 
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#92f0e1f3faf7feebd2f5fff3fbfebcf1fdff" class="contact-btn email">
+        <a href="/cdn-cgi/l/email-protection#620011030a070e1b4c150d100922050f030b0e4c010d0f" class="contact-btn email">
           ✉ Send an Email
         </a>
         <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="contact-btn social">
@@ -1131,13 +1375,11 @@
         </a>
       </div>
 
-      <!-- Upload resume.pdf to your repo root for this link to work -->
       <p class="resume-prompt">
         Prefer a document? <a href="resume.pdf" download>Download my resume (PDF)</a>
       </p>
-    </div><!-- end section-inner -->
+    </div>
   </section>
-  <!-- END SECTION 5: CONTACT -->
 
   <!-- ============================================================
        FOOTER
@@ -1147,9 +1389,9 @@
   </footer>
 
   <!-- ============================================================
-       JAVASCRIPT — Mobile nav toggle
+       JAVASCRIPT
   ============================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── HAMBURGER MENU — mobile nav toggle ───────────────────────
     const hamburger = document.querySelector('.hamburger');
     const navLinks  = document.querySelector('.nav-links');
@@ -1167,9 +1409,7 @@
       navLinks.style.gap = '1.25rem';
     });
 
-    // ── COLLAPSIBLE PROJECT CARDS ─────────────────────────────────
-    // Clicking the toggle row on each card expands it.
-    // Only one card can be open at a time (accordion behaviour).
+    // ── COLLAPSIBLE PROJECT CARDS — accordion behaviour ───────────
     const toggleBtns = document.querySelectorAll('.card-toggle');
 
     toggleBtns.forEach(btn => {
@@ -1177,20 +1417,11 @@
         const card   = btn.closest('.project-card');
         const isOpen = card.classList.contains('is-open');
 
-        // Close all cards
+        // Close all cards first
         document.querySelectorAll('.project-card').forEach(c => {
           c.classList.remove('is-open');
           c.querySelector('.card-toggle').setAttribute('aria-expanded', 'false');
         });
 
-        // If card was closed, open it
-        if (!isOpen) {
-          card.classList.add('is-open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+        // If this card was closed, open it
+        if (!isOpen)
