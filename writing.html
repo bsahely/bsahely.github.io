@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Writing & Thinking | Sahely Banerjee</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ============================================================
+       Same root variables as main site — keep consistent
+    ============================================================ */
+    :root {
+      --charcoal-dark:  #1A202C;
+      --charcoal:       #2D3748;
+      --charcoal-mid:   #4A5568;
+      --charcoal-light: #718096;
+      --teal:           #38B2AC;
+      --teal-dark:      #2C7A7B;
+      --teal-light:     #81E6D9;
+      --bg-light:       #F7FAFC;
+      --bg-section:     #EDF2F7;
+      --white:          #FFFFFF;
+      --text-dark:      #1A202C;
+      --text-mid:       #4A5568;
+      --text-light:     #718096;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ============================================================
+       NAVIGATION — identical to main site
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(26, 32, 44, 0.96);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--teal);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #CBD5E0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--teal); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+    }
+
+    /* ============================================================
+       PAGE HERO — smaller than main site hero
+    ============================================================ */
+    .page-hero {
+      background: linear-gradient(135deg, var(--charcoal-dark) 0%, var(--charcoal) 60%, #234E52 100%);
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(56,178,172,0.1) 0%, transparent 60%);
+    }
+    .page-hero-content { position: relative; max-width: 680px; margin: 0 auto; }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(56,178,172,0.15);
+      border: 1px solid rgba(56,178,172,0.35);
+      color: var(--teal-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      color: #A0AEC0;
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       FILTER TABS
+    ============================================================ */
+    .filter-bar {
+      background: var(--bg-light);
+      border-bottom: 1px solid #E2E8F0;
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+    }
+    .filter-btn {
+      background: var(--white);
+      border: 1px solid #CBD5E0;
+      color: var(--text-mid);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--white);
+    }
+
+    /* ============================================================
+       WRITING GRID
+    ============================================================ */
+    .writing-section {
+      padding: 4rem 2rem 6rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Each article card */
+    .article-card {
+      background: var(--white);
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    }
+
+    .article-card-top {
+      padding: 1.5rem 1.5rem 0;
+    }
+
+    .article-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: rgba(56,178,172,0.1);
+      border: 1px solid rgba(56,178,172,0.25);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+
+    .article-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--charcoal-dark);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    .article-card-footer {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--bg-section);
+      margin-top: 1.25rem;
+    }
+
+    .article-meta {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    .article-link {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .article-link:hover { gap: 8px; }
+
+    /* External link badge */
+    .badge-external {
+      font-size: 0.68rem;
+      background: var(--bg-section);
+      color: var(--text-light);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ============================================================
+       "COMING SOON" EMPTY STATE
+    ============================================================ */
+    .coming-soon {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-light);
+      display: none; /* shown via JS when no cards visible */
+    }
+    .coming-soon h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ============================================================
+       CALL TO ACTION — bottom of page
+    ============================================================ */
+    .writing-cta {
+      background: var(--bg-section);
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid #E2E8F0;
+    }
+    .writing-cta h2 {
+      font-size: 1.6rem;
+      color: var(--charcoal-dark);
+      margin-bottom: 0.75rem;
+    }
+    .writing-cta p {
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .cta-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      padding: 0.8rem 1.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .cta-btn.primary {
+      background: var(--teal);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(56,178,172,0.3);
+    }
+    .cta-btn.primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+    .cta-btn.secondary {
+      background: var(--white);
+      color: var(--text-mid);
+      border: 1px solid #CBD5E0;
+    }
+    .cta-btn.secondary:hover { border-color: var(--teal); color: var(--teal-dark); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--charcoal-dark);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      color: #4A5568;
+      font-size: 0.8rem;
+    }
+
+    /* ============================================================
+       MOBILE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .writing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav>
+    <a href="index.html" class="nav-logo">Sahely Banerjee</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="writing.html" class="active">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       PAGE HERO
+  ============================================================ -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <span class="hero-tag">Writing &amp; Thinking</span>
+      <h1>Ideas worth sharing.</h1>
+      <p>
+        Case studies, product thinking, and BA/PO reflections —
+        written to be repurposed, referenced, and built upon.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FILTER BAR
+       data-filter values must match article-card data-category values
+  ============================================================ -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="case-study">Case Studies</button>
+    <button class="filter-btn" data-filter="product-thinking">Product Thinking</button>
+    <button class="filter-btn" data-filter="agile">Agile &amp; Delivery</button>
+    <button class="filter-btn" data-filter="ai">AI &amp; Innovation</button>
+  </div>
+
+  <!-- ============================================================
+       WRITING GRID
+       To add a new article: copy one article-card block,
+       update the data-category, title, description, date, and href.
+  ============================================================ -->
+  <section class="writing-section">
+    <div class="writing-grid" id="writingGrid">
+
+      <!-- ── ARTICLE 1: KDA RevOps Case Study ─────────────────── -->
+      <!-- data-category must match a filter-btn data-filter value -->
+      <div class="article-card" data-category="case-study">
+        <div class="article-card-top">
+          <span class="article-type">Case Study</span>
+          <h3>KDA RevOps: Building a Unified Revenue Reporting Layer</h3>
+        </div>
+        <p>
+          How I integrated Salesforce, Snowflake, and Power BI into a single
+          source of truth for ARR tracking, churn analysis, and bookings
+          forecasting — and what I learned about alignment before architecture.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">Coming soon · Quickbase</span>
+          <a href="writing/kda-revops-case-study.html" class="article-link">Read →</a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 2: Agentic AI Case Study ─────────────────── -->
+      <div class="article-card" data-category="case-study ai">
+        <div class="article-card-top">
+          <span class="article-type">Case Study · AI</span>
+          <h3>Shipping Agentic AI: What $1M in Pipeline Actually Took</h3>
+        </div>
+        <p>
+          A behind-the-scenes look at leading Quickbase's 1Mind Agentic AI
+          deployment — from discovery and stakeholder alignment to bot design,
+          GTM rollout, and measuring real pipeline influence.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">Coming soon · Quickbase</span>
+          <a href="writing/agentic-ai-case-study.html" class="article-link">Read →</a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 3: Gainsight + Gong + Intelagree Case Study ── -->
+      <div class="article-card" data-category="case-study">
+        <div class="article-card-top">
+          <span class="article-type">Case Study</span>
+          <h3>Three Integrations, One GTM Stack: Gainsight, Gong &amp; Intelagree</h3>
+        </div>
+        <p>
+          How I orchestrated three parallel Salesforce integrations — CS health
+          workflows via Gainsight, revenue intelligence via Gong, and end-to-end
+          contract automation via Intelagree — to close gaps across CS, Sales,
+          and Legal in a single delivery cycle.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">Coming soon · Quickbase</span>
+          <a href="writing/gainsight-gong-intelagree-case-study.html" class="article-link">Read →</a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 4: Booking.com (repurposed from Medium) ───── -->
+      <div class="article-card" data-category="product-thinking">
+        <div class="article-card-top">
+          <span class="article-type">Product Thinking</span>
+          <h3>Booking.com Micro Stay: A Product Launch Strategy</h3>
+        </div>
+        <p>
+          A structured product thinking exercise — defining the opportunity,
+          target personas, GTM approach, and success metrics for a micro-stay
+          feature in a mature booking platform.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">May 2023 · Medium</span>
+          <a href="https://medium.com/@sahelybanerjee/booking-com-micro-stay-launch-strategy-b9a13d5f01b8"
+             target="_blank" class="article-link">
+            Read <span class="badge-external">↗ Medium</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 5: B2B Onboarding (rewritten, no cohort mentions) ── -->
+      <div class="article-card" data-category="product-thinking">
+        <div class="article-card-top">
+          <span class="article-type">Product Thinking</span>
+          <h3>B2B Onboarding &amp; Activation — Getting Users to Value, Fast</h3>
+        </div>
+        <p>
+          A breakdown of what actually makes B2B onboarding work — covering
+          activation frameworks, the moments where most products lose users,
+          and how to design for the "aha moment" before churn becomes irreversible.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">May 2023 · Medium</span>
+          <a href="https://medium.com/@sahelybanerjee/b2b-onboarding-and-activation-product-led-growth-concept-d59fec8c774f"
+             target="_blank" class="article-link">
+            Read <span class="badge-external">↗ Medium</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 6: ParkMobile Case Study ────────────────────── -->
+      <!-- HOW TO ADD YOUR SLIDES:
+           1. Export your ParkMobile PowerPoint as PDF
+           2. Name the file: parkmobile-case-study.pdf
+           3. In GitHub, click Add file → Upload files
+           4. Upload it into a folder called: writing/
+              (type "writing/parkmobile-case-study.pdf" as the path)
+           5. The link below will then work automatically.
+           If you want to keep linking to LinkedIn instead,
+           replace the href with your LinkedIn post URL.
+      ── -->
+      <div class="article-card" data-category="case-study product-thinking">
+        <div class="article-card-top">
+          <span class="article-type">Case Study · Product Thinking</span>
+          <h3>ParkMobile: Rethinking Urban Parking Through Product Strategy</h3>
+        </div>
+        <p>
+          A product deep-dive into ParkMobile — analysing user friction in urban
+          parking, identifying opportunity areas, and outlining a strategic
+          approach to improving the end-to-end experience for drivers and cities.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">2023 · Slide Deck</span>
+          <!-- REPLACE href below with: writing/parkmobile-case-study.pdf
+               once you've uploaded the file to GitHub -->
+          <a href="writing/parkmobile-case-study.pdf" target="_blank" class="article-link">
+            View Deck <span class="badge-external">↗ PDF</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── ARTICLE 7: Placeholder — add your next article here ─ -->
+      <!-- Copy this block, fill in the details, and commit.       -->
+      <!--
+      <div class="article-card" data-category="agile">
+        <div class="article-card-top">
+          <span class="article-type">Agile &amp; Delivery</span>
+          <h3>Your Article Title Here</h3>
+        </div>
+        <p>
+          A short 2-3 sentence description of what this article covers
+          and why it's worth reading.
+        </p>
+        <div class="article-card-footer">
+          <span class="article-meta">Month Year · Source</span>
+          <a href="#" class="article-link">Read →</a>
+        </div>
+      </div>
+      -->
+
+    </div><!-- end writing-grid -->
+
+    <!-- Empty state (shown if filter returns no results) -->
+    <div class="coming-soon" id="emptyState">
+      <h3>Nothing here yet in this category.</h3>
+      <p>Check back soon — or <a href="index.html#contact" style="color:var(--teal)">get in touch</a> if you'd like to collaborate.</p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       CALL TO ACTION
+  ============================================================ -->
+  <div class="writing-cta">
+    <h2>Want more?</h2>
+    <p>Follow me on Medium for product thinking and BA/PO reflections — or connect on LinkedIn.</p>
+    <div class="cta-links">
+      <a href="https://medium.com/@sahelybanerjee" target="_blank" class="cta-btn primary">✍ Follow on Medium</a>
+      <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="cta-btn secondary">in Connect on LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <p>© 2026 Sahely Banerjee · Built with intention, hosted on GitHub Pages</p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — filter tabs + mobile nav
+  ============================================================ -->
+  <script>
+    // ── FILTER TABS ──────────────────────────────────────────────
+    // When a filter button is clicked, show only cards whose
+    // data-category contains the selected filter value.
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards      = document.querySelectorAll('.article-card');
+    const emptyState = document.getElementById('emptyState');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button style
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        let visible = 0;
+
+        cards.forEach(card => {
+          // data-category can hold multiple space-separated values
+          const cats = card.dataset.category.split(' ');
+          const show = filter === 'all' || cats.includes(filter);
+          card.style.display = show ? 'flex' : 'none';
+          if (show) visible++;
+        });
+
+        // Show empty state if no cards match
+        emptyState.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+
+    // ── MOBILE NAV ───────────────────────────────────────────────
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks  = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '64px';
+      navLinks.style.right = '0';
+      navLinks.style.left = '0';
+      navLinks.style.background = 'rgba(26,32,44,0.98)';
+      navLinks.style.padding = '1.5rem 2rem';
+      navLinks.style.gap = '1.25rem';
+    });
+  </script>
+
+</body>
+</html>
