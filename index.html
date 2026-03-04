@@ -316,43 +316,44 @@
     ============================================================ */
     #skills { background: var(--white); }
 
+    /* Skills: 3 columns top row, 3 columns bottom — all visible at once */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
 
     .skill-category {
       background: var(--bg-light);
       border-radius: 10px;
-      padding: 1.5rem;
+      padding: 1rem 1.25rem;
       border-left: 4px solid var(--teal);
     }
 
     .skill-category h4 {
       font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--teal-dark);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     /* Skills displayed as pill tags */
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .skill-tag {
       background: var(--white);
       border: 1px solid #CBD5E0;
       color: var(--text-mid);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      padding: 0.3rem 0.75rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 999px;
       transition: all 0.2s;
     }
@@ -467,6 +468,144 @@
     .card-link:hover { gap: 8px; }
 
     /* ============================================================
+       COLLAPSIBLE CARD BODY
+       .card-body is hidden by default, shown when .is-open is added
+    ============================================================ */
+    .card-body {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      flex: 1;
+    }
+
+    .project-card.is-open .card-body {
+      padding: 1.5rem;
+      max-height: 400px; /* large enough for any content */
+    }
+
+    /* Toggle button row — sits between header and body */
+    .card-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      background: var(--white);
+      border: none;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.3px;
+      transition: color 0.2s, background 0.2s;
+      border-top: 1px solid var(--bg-section);
+    }
+    .card-toggle:hover { color: var(--teal); background: var(--bg-light); }
+
+    .toggle-arrow {
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+    .project-card.is-open .toggle-arrow { transform: rotate(180deg); }
+
+    /* Footer only visible when card is open */
+    .card-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--bg-section);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      display: none; /* hidden by default */
+    }
+    .project-card.is-open .card-footer { display: flex; }
+
+    /* ============================================================
+       WRITING PREVIEW SECTION
+    ============================================================ */
+    #writing-preview { background: var(--white); }
+
+    .writing-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .preview-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .preview-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      border-color: var(--teal);
+    }
+
+    .preview-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: rgba(56,178,172,0.1);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .preview-card h3 {
+      font-size: 1rem;
+      color: var(--charcoal-dark);
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .preview-card p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .preview-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--teal);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .preview-link:hover { gap: 8px; }
+
+    .writing-preview-cta {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 2px solid var(--teal);
+      color: var(--teal-dark);
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--teal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
        CONTACT SECTION
     ============================================================ */
     #contact {
@@ -561,6 +700,13 @@
       .about-highlights { gap: 1rem; }
 
       section { padding: 4rem 1.25rem; }
+
+      /* Skills: 2 columns on tablet, 1 on small mobile */
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -785,12 +931,17 @@
 
       <div class="portfolio-grid">
 
-        <!-- PROJECT CARD 1: KDA RevOps -->
+        <!-- PROJECT CARD 1: KDA RevOps — collapsed by default, click to expand -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">Revenue Operations &amp; Data</span>
             <h3>KDA RevOps: Unified Reporting Layer</h3>
           </div>
+          <!-- Toggle button — clicking this expands/collapses the card -->
+          <button class="card-toggle" aria-expanded="false">
+            <span class="toggle-label">Senior BA — RevOps Lead · Quickbase</span>
+            <span class="toggle-arrow">▼</span>
+          </button>
           <div class="card-body">
             <div class="card-meta">
               <span class="meta-item"><strong>Role:</strong> Senior BA — RevOps Lead</span>
@@ -812,12 +963,16 @@
           </div>
         </div>
 
-        <!-- PROJECT CARD 2: Agentic AI -->
+        <!-- PROJECT CARD 2: Agentic AI — collapsed by default -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">AI &amp; Agentic Innovation</span>
             <h3>Agentic AI: From Concept to $1M Pipeline</h3>
           </div>
+          <button class="card-toggle" aria-expanded="false">
+            <span class="toggle-label">Senior BA — Central AI Team Lead · Quickbase</span>
+            <span class="toggle-arrow">▼</span>
+          </button>
           <div class="card-body">
             <div class="card-meta">
               <span class="meta-item"><strong>Role:</strong> Senior BA — Central AI Team Lead</span>
@@ -839,12 +994,16 @@
           </div>
         </div>
 
-        <!-- PROJECT CARD 3: Gainsight + Gong + Intelagree -->
+        <!-- PROJECT CARD 3: Gainsight + Gong + Intelagree — collapsed by default -->
         <div class="project-card">
           <div class="card-header">
             <span class="card-tag">CRM &amp; GTM Integration</span>
             <h3>Salesforce GTM Stack: Gainsight, Gong &amp; Intelagree</h3>
           </div>
+          <button class="card-toggle" aria-expanded="false">
+            <span class="toggle-label">Senior BA — Systems &amp; Integration Lead · Quickbase</span>
+            <span class="toggle-arrow">▼</span>
+          </button>
           <div class="card-body">
             <div class="card-meta">
               <span class="meta-item"><strong>Role:</strong> Senior BA — Systems &amp; Integration Lead</span>
@@ -870,6 +1029,54 @@
     </div><!-- end section-inner -->
   </section>
   <!-- END SECTION 4: PORTFOLIO -->
+
+  <!-- ============================================================
+       SECTION 4.5: WRITING PREVIEW
+       Shows 3 article snippets so visitors discover writing
+       without needing to navigate to writing.html first
+  ============================================================ -->
+  <section id="writing-preview">
+    <div class="section-inner">
+      <p class="section-label">From the Writing</p>
+      <h2 class="section-title">Thinking Out Loud</h2>
+      <div class="section-divider"></div>
+
+      <div class="writing-preview-grid">
+
+        <!-- Preview 1 -->
+        <div class="preview-card">
+          <span class="preview-type">Case Study · AI</span>
+          <h3>Shipping Agentic AI: What $1M in Pipeline Actually Took</h3>
+          <p>A behind-the-scenes look at leading Quickbase's Agentic AI deployment — from stakeholder alignment to bot design and GTM rollout.</p>
+          <a href="writing/agentic-ai-case-study.html" class="preview-link">Read more →</a>
+        </div>
+
+        <!-- Preview 2 -->
+        <div class="preview-card">
+          <span class="preview-type">Product Thinking</span>
+          <h3>Booking.com Micro Stay: A Product Launch Strategy</h3>
+          <p>Defining the opportunity, target personas, GTM approach, and success metrics for a micro-stay feature in a mature booking platform.</p>
+          <a href="https://medium.com/@sahelybanerjee/booking-com-micro-stay-launch-strategy-b9a13d5f01b8"
+             target="_blank" class="preview-link">Read on Medium →</a>
+        </div>
+
+        <!-- Preview 3 -->
+        <div class="preview-card">
+          <span class="preview-type">Case Study</span>
+          <h3>ParkMobile: Rethinking Urban Parking Through Product Strategy</h3>
+          <p>A product deep-dive into user friction in urban parking, identifying opportunity areas and a strategic approach to improving the end-to-end experience.</p>
+          <a href="writing/parkmobile-case-study.pdf" target="_blank" class="preview-link">View slide deck →</a>
+        </div>
+
+      </div>
+
+      <div class="writing-preview-cta">
+        <a href="writing.html" class="btn-outline">See all writing →</a>
+      </div>
+
+    </div>
+  </section>
+  <!-- END SECTION 4.5: WRITING PREVIEW -->
 
   <!-- ============================================================
        SECTION 5: CONTACT
@@ -917,8 +1124,8 @@
   <!-- ============================================================
        JAVASCRIPT — Mobile nav toggle
   ============================================================ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Hamburger menu toggle for mobile screens
+  <script>
+    // ── HAMBURGER MENU — mobile nav toggle ───────────────────────
     const hamburger = document.querySelector('.hamburger');
     const navLinks  = document.querySelector('.nav-links');
 
@@ -930,4 +1137,35 @@
       navLinks.style.top = '64px';
       navLinks.style.right = '0';
       navLinks.style.left = '0';
-      navLinks.style.backgroun
+      navLinks.style.background = 'rgba(26,32,44,0.98)';
+      navLinks.style.padding = '1.5rem 2rem';
+      navLinks.style.gap = '1.25rem';
+    });
+
+    // ── COLLAPSIBLE PROJECT CARDS ─────────────────────────────────
+    // Clicking the toggle row on each card expands it.
+    // Only one card can be open at a time (accordion behaviour).
+    const toggleBtns = document.querySelectorAll('.card-toggle');
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card   = btn.closest('.project-card');
+        const isOpen = card.classList.contains('is-open');
+
+        // Close all cards
+        document.querySelectorAll('.project-card').forEach(c => {
+          c.classList.remove('is-open');
+          c.querySelector('.card-toggle').setAttribute('aria-expanded', 'false');
+        });
+
+        // If card was closed, open it
+        if (!isOpen) {
+          card.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
