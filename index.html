@@ -192,26 +192,8 @@
       transition: border-color 0.2s, transform 0.15s;
     }
     .btn-secondary:hover { border-color: var(--teal); transform: translateY(-2px); }
-   
-    /* Resume download button in hero */
-.btn-resume {
-  background: transparent;
-  color: var(--teal-light);
-  padding: 0.85rem 2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: 2px solid rgba(129, 230, 217, 0.4);
-  transition: border-color 0.2s, background 0.2s, transform 0.15s;
-}
-.btn-resume:hover {
-  border-color: var(--teal-light);
-  background: rgba(129, 230, 217, 0.08);
-  transform: translateY(-2px);
-}
-  
+
     /* Scroll indicator */
-    
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -594,6 +576,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="writing.html">Writing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" aria-label="Menu">
@@ -612,13 +595,10 @@
         I bridge the gap between business needs and technical solutions —
         crafting user stories, roadmaps, and requirements that teams actually ship.
       </p>
-      <div class="hero-cta"
-     <div class="hero-cta">
-  <a href="#portfolio" class="btn-primary">View My Work</a>
-  <a href="#contact" class="btn-secondary">Get In Touch</a>
-  <!-- Resume download button — links to resume.pdf in your repo root -->
-  <a href="resume.pdf" download class="btn-resume">⬇ Download Resume</a>
-</div>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
     </div>
     <div class="scroll-hint">Scroll</div>
   </section>
@@ -805,78 +785,84 @@
 
       <div class="portfolio-grid">
 
-        <!-- PROJECT CARD 1 — placeholder, to be replaced with real project -->
+        <!-- PROJECT CARD 1: KDA RevOps -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">AI &amp; CRM Innovation</span>
-            <h3>Agentic AI &amp; CRM Transformation</h3>
+            <span class="card-tag">Revenue Operations &amp; Data</span>
+            <h3>KDA RevOps: Unified Reporting Layer</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> Senior BA / AI Initiative Lead</span>
+              <span class="meta-item"><strong>Role:</strong> Senior BA — RevOps Lead</span>
               <span class="meta-item"><strong>Company:</strong> Quickbase</span>
             </div>
             <p class="card-problem">
-              Quickbase needed to modernise its inbound lead engine and reduce customer churn —
-              two mission-critical priorities with no unified systems strategy in place.
+              Revenue, CS, and Finance teams operated from disconnected data sources —
+              ARR tracking, churn calculations, and bookings forecasts lived in separate
+              systems with no single source of truth, making cross-functional decisions slow and unreliable.
             </p>
             <div class="card-outcome">
-              ✦ Led Agentic AI implementation generating ~$1M in influenced pipeline and
-              orchestrated Salesforce–Gainsight workflows contributing to ~$1.5M in churn reduction.
+              ✦ Integrated Salesforce, Snowflake, and Power BI into a unified RevOps
+              reporting layer — enabling real-time ARR tracking, churn analysis,
+              Rip-and-Replace modelling, and bookings forecasting across the business.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a>
+            <a href="writing/kda-revops-case-study.html" class="card-link">View Case Study →</a>
           </div>
         </div>
 
-        <!-- PROJECT CARD 2 — placeholder, to be replaced with real project -->
+        <!-- PROJECT CARD 2: Agentic AI -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">CPQ &amp; Release Delivery</span>
-            <h3>Enterprise CPQ Release Programme</h3>
+            <span class="card-tag">AI &amp; Agentic Innovation</span>
+            <h3>Agentic AI: From Concept to $1M Pipeline</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> Business Analyst II</span>
-              <span class="meta-item"><strong>Company:</strong> VMware</span>
+              <span class="meta-item"><strong>Role:</strong> Senior BA — Central AI Team Lead</span>
+              <span class="meta-item"><strong>Company:</strong> Quickbase</span>
             </div>
             <p class="card-problem">
-              VMware's CPQ platform required continuous high-velocity delivery across 7 SaaS
-              product lines — with a 27-member cross-functional team and quarterly release pressure.
+              Quickbase's inbound lead engine was underperforming — with no AI-assisted
+              engagement at the top of funnel. Simultaneously, the business needed a
+              scalable AI strategy across SDR, Renewal, Sales, and Deal Desk workflows.
             </p>
             <div class="card-outcome">
-              ✦ Managed 8 quarterly + 16 monthly releases and enabled 92+ CPQ SKUs across
-              vSphere+, vSAN+, NSX and other product lines in under 2 years.
+              ✦ Led 1Mind Agentic AI deployment on Quickbase.com — generating ~$1M in
+              influenced pipeline within Q1 post-launch. Co-authored live bots and
+              automation workflows now active across 4 go-to-market teams.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a>
+            <a href="writing/agentic-ai-case-study.html" class="card-link">View Case Study →</a>
           </div>
         </div>
 
-        <!-- PROJECT CARD 3 — placeholder, to be replaced with real project -->
+        <!-- PROJECT CARD 3: Gainsight + Gong + Intelagree -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">CRM Migration</span>
-            <h3>SAP CRM → Salesforce Migration</h3>
+            <span class="card-tag">CRM &amp; GTM Integration</span>
+            <h3>Salesforce GTM Stack: Gainsight, Gong &amp; Intelagree</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> SFDC BA &amp; CPQ Functional Lead</span>
-              <span class="meta-item"><strong>Client:</strong> Nokia (via Accenture)</span>
+              <span class="meta-item"><strong>Role:</strong> Senior BA — Systems &amp; Integration Lead</span>
+              <span class="meta-item"><strong>Company:</strong> Quickbase</span>
             </div>
             <p class="card-problem">
-              Nokia needed a full migration from SAP CRM to Salesforce — spanning Sales Cloud,
-              Service Cloud, and CPQ — across multiple business units with complex quoting requirements.
+              CS, Sales, and Legal teams operated with critical blind spots — no automated
+              customer health triggers, no conversation intelligence in Salesforce, and
+              contracts managed entirely outside the CRM creating compliance and velocity risk.
             </p>
             <div class="card-outcome">
-              ✦ Delivered end-to-end CRM setup, 4 quoting implementations, and cross-BU alignment —
-              recognised with the Nokia Client Excellence Award at GA launch in Germany.
+              ✦ Delivered three parallel integrations: Gainsight (contributing to ~$1.5M
+              churn reduction), Gong with MEDDPICC playbooks, and Intelagree contract
+              automation with 7 contract types and 40% adoption in month one.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a>
+            <a href="writing/gainsight-gong-intelagree-case-study.html" class="card-link">View Case Study →</a>
           </div>
         </div>
 
@@ -899,7 +885,7 @@
       </p>
 
       <div class="contact-links">
-        <a href="mailto:bsahely@gmail.com" class="contact-btn email">
+        <a href="/cdn-cgi/l/email-protection#92f0e1f3faf7feebd2f5fff3fbfebcf1fdff" class="contact-btn email">
           ✉ Send an Email
         </a>
         <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="contact-btn social">
@@ -931,7 +917,7 @@
   <!-- ============================================================
        JAVASCRIPT — Mobile nav toggle
   ============================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Hamburger menu toggle for mobile screens
     const hamburger = document.querySelector('.hamburger');
     const navLinks  = document.querySelector('.nav-links');
@@ -944,11 +930,4 @@
       navLinks.style.top = '64px';
       navLinks.style.right = '0';
       navLinks.style.left = '0';
-      navLinks.style.background = 'rgba(26,32,44,0.98)';
-      navLinks.style.padding = '1.5rem 2rem';
-      navLinks.style.gap = '1.25rem';
-    });
-  </script>
-
-</body>
-</html>
+      navLinks.style.backgroun
