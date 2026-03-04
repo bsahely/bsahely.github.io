@@ -339,6 +339,7 @@
       margin-bottom: 1rem;
     }
 
+    /* Skills displayed as pill tags */
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
@@ -391,7 +392,6 @@
     .card-header {
       background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-dark) 100%);
       padding: 1.75rem 1.5rem;
-      position: relative;
     }
 
     .card-tag {
@@ -511,19 +511,12 @@
     }
     .contact-btn.email:hover { background: var(--teal-dark); transform: translateY(-2px); }
 
-    .contact-btn.linkedin {
+    .contact-btn.social {
       background: rgba(255,255,255,0.07);
       color: var(--white);
       border: 1px solid rgba(255,255,255,0.15);
     }
-    .contact-btn.linkedin:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-
-    .contact-btn.github {
-      background: rgba(255,255,255,0.07);
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .contact-btn.github:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .contact-btn.social:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
 
     .resume-prompt {
       color: #718096;
@@ -591,7 +584,7 @@
   </nav>
 
   <!-- ============================================================
-       HERO
+       SECTION 1: HERO
   ============================================================ -->
   <section id="hero">
     <div class="hero-content">
@@ -610,7 +603,7 @@
   </section>
 
   <!-- ============================================================
-       ABOUT
+       SECTION 2: ABOUT
   ============================================================ -->
   <section id="about">
     <div class="section-inner">
@@ -620,43 +613,42 @@
 
       <div class="about-grid">
 
-        <!-- REPLACE: Upload your photo and use <img src="images/photo.jpg" alt="Your Name"> -->
+        <!-- Photo placeholder — replace src with images/photo.jpg when ready -->
         <div class="about-photo-placeholder">
           📸 Replace with<br/>your headshot<br/><br/><small>images/photo.jpg</small>
         </div>
 
         <div class="about-text">
-          <!-- My Bio -->
-  <p>
-  I'm a Senior Technical Business Analyst and Product Owner with 11+ years 
-  of experience driving enterprise transformation across SaaS, Fintech, and 
-  Telco — where the problems are complex, the stakeholders are many, and the 
-  margin for ambiguity is zero.
-</p>
-<p>
-  My work sits deep in the Salesforce ecosystem — across Sales Cloud, Service 
-  Cloud, CPQ, and Agentforce — but my real expertise is translating messy 
-  business realities into clean, shippable requirements. I've led Q2C process 
-  redesigns, spearheaded company-wide AI initiatives, and orchestrated CRM 
-  migrations across global teams at companies like Quickbase, VMware, and 
-  Accenture — working with clients including Nokia and Adecco.
-</p>
-<p>
-  Most recently, I led Agentic AI implementations that generated ~$1M in 
-  influenced pipeline and contributed to ~$1.5M in churn reduction — proof 
-  that great BA/PO work doesn't just support the business, it moves the needle.
-</p>
-<p>
-  I believe the best analysts are invisible. When I've done my job well, 
-  engineers ship with confidence, stakeholders trust the plan, and users 
-  actually get value. That's the bar I hold myself to.
-</p>
-<p>
-  Outside of work, I'm based in Bengaluru — and I believe the best product 
-  thinking happens in conversations, not documents.
-</p>
-<!-- ===== END BIO ===== -->
-          <!-- REPLACE: Update numbers to reflect your real experience -->
+          <p>
+            I'm a Senior Technical Business Analyst and Product Owner with 11+ years
+            of experience driving enterprise transformation across SaaS, Fintech, and
+            Telco — where the problems are complex, the stakeholders are many, and the
+            margin for ambiguity is zero.
+          </p>
+          <p>
+            My work sits deep in the Salesforce ecosystem — across Sales Cloud, Service
+            Cloud, CPQ, and Agentforce — but my real expertise is translating messy
+            business realities into clean, shippable requirements. I've led Q2C process
+            redesigns, spearheaded company-wide AI initiatives, and orchestrated CRM
+            migrations across global teams at companies like Quickbase, VMware, and
+            Accenture — working with clients including Nokia and Adecco.
+          </p>
+          <p>
+            Most recently, I led Agentic AI implementations that generated ~$1M in
+            influenced pipeline and contributed to ~$1.5M in churn reduction — proof
+            that great BA/PO work doesn't just support the business, it moves the needle.
+          </p>
+          <p>
+            I believe the best analysts are invisible. When I've done my job well,
+            engineers ship with confidence, stakeholders trust the plan, and users
+            actually get value. That's the bar I hold myself to.
+          </p>
+          <p>
+            Outside of work, I'm based in Bengaluru — and I believe the best product
+            thinking happens in conversations, not documents.
+          </p>
+
+          <!-- Stats row -->
           <div class="about-highlights">
             <div class="highlight-stat">
               <div class="number">11+</div>
@@ -667,18 +659,19 @@
               <div class="label">Projects Delivered</div>
             </div>
             <div class="highlight-stat">
-              <div class="number">4</div>
+              <div class="number">3</div>
               <div class="label">Industries</div>
             </div>
           </div>
-        </div>
+        </div><!-- end about-text -->
 
-      </div>
-    </div>
+      </div><!-- end about-grid -->
+    </div><!-- end section-inner -->
   </section>
+  <!-- END SECTION 2: ABOUT -->
 
   <!-- ============================================================
-       SKILLS
+       SECTION 3: SKILLS
   ============================================================ -->
   <section id="skills">
     <div class="section-inner">
@@ -688,101 +681,100 @@
 
       <div class="skills-grid">
 
-        <!-- ===== SKILLS GRID — 6 categories based on real resume ===== -->
-<div class="skills-grid">
+        <!-- Category 1: BA & Functional -->
+        <div class="skill-category">
+          <h4>BA &amp; Functional</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">BRD / FRD Writing</span>
+            <span class="skill-tag">Fit-Gap Analysis</span>
+            <span class="skill-tag">UAT Management</span>
+            <span class="skill-tag">Process Improvement</span>
+            <span class="skill-tag">Enterprise Architecture</span>
+            <span class="skill-tag">Contract Lifecycle Mgmt</span>
+            <span class="skill-tag">Release &amp; Delivery Mgmt</span>
+            <span class="skill-tag">M&amp;A Discovery</span>
+          </div>
+        </div>
 
-  <!-- Category 1: BA & Functional -->
-  <div class="skill-category">
-    <h4>BA & Functional</h4>
-    <ul>
-      <li>BRD / FRD Writing</li>
-      <li>M&A Discovery</li>
-      <li>Fit-Gap Analysis</li>
-      <li>Process Improvement</li>
-      <li>Enterprise Architecture</li>
-      <li>Contract Lifecycle Mgmt</li>
-      <li>Release & Delivery Mgmt</li>
-       <li>UAT Management</li>
-    </ul>
-  </div>
+        <!-- Category 2: Product & RevOps -->
+        <div class="skill-category">
+          <h4>Product &amp; RevOps</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Backlog Management</span>
+            <span class="skill-tag">Roadmapping</span>
+            <span class="skill-tag">GTM Strategy</span>
+            <span class="skill-tag">Q2C / Lead-to-Cash</span>
+            <span class="skill-tag">Stakeholder Management</span>
+            <span class="skill-tag">Revenue Operations</span>
+            <span class="skill-tag">CPQ &amp; Quoting</span>
+            <span class="skill-tag">Billing Systems</span>
+          </div>
+        </div>
 
-  <!-- Category 2: Product & RevOps -->
-  <div class="skill-category">
-    <h4>Product & RevOps</h4>
-    <ul>
-      <li>Backlog Management</li>
-      <li>Roadmapping</li>
-      <li>GTM Strategy</li>
-      <li>Q2C / Lead-to-Cash</li>
-      <li>Stakeholder Management</li>
-      <li>Revenue Operations</li>
-      <li>CPQ &amp; Quoting</li>
-      <li>Billing Systems</li>
-    </ul>
-  </div>
+        <!-- Category 3: Salesforce Ecosystem -->
+        <div class="skill-category">
+          <h4>Salesforce Ecosystem</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Sales Cloud</span>
+            <span class="skill-tag">Service Cloud</span>
+            <span class="skill-tag">Salesforce CPQ</span>
+            <span class="skill-tag">Agentforce</span>
+            <span class="skill-tag">Data Cloud</span>
+            <span class="skill-tag">Gainsight</span>
+            <span class="skill-tag">Intelagree</span>
+            <span class="skill-tag">RingLead / Zoominfo</span>
+          </div>
+        </div>
 
-  <!-- Category 3: Salesforce Ecosystem -->
-  <div class="skill-category">
-    <h4>Salesforce Ecosystem</h4>
-    <ul>
-      <li>Sales Cloud</li>
-      <li>Service Cloud</li>
-      <li>Salesforce CPQ</li>
-      <li>Agentforce</li>
-      <li>Data Cloud</li>
-      <li>Gainsight</li>
-      <li>Gong</li>
-      <li>Intelagree</li>
-      <li>RingLead / Zoominfo</li>
-    </ul>
-  </div>
+        <!-- Category 4: Tools & Platforms -->
+        <div class="skill-category">
+          <h4>Tools &amp; Platforms</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Workato</span>
+            <span class="skill-tag">Quickbase</span>
+            <span class="skill-tag">Lucidchart</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">Gong</span>
+            <span class="skill-tag">Miro / Figma</span>
+          </div>
+        </div>
 
-  <!-- Category 4: Tools & Platforms -->
-  <div class="skill-category">
-    <h4>Tools & Platforms</h4>
-    <ul>
-      <li>Jira</li>
-      <li>Claude Code</li>
-      <li>Workato</li>
-      <li>Quickbase</li>
-      <li>Lucidchart</li>
-      <li>Power BI</li>
-      <li>Snowflake</li>
-      <li>Miro / Figma</li>
-    </ul>
-  </div>
+        <!-- Category 5: Methodologies -->
+        <div class="skill-category">
+          <h4>Methodologies</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Agile / Scrum</span>
+            <span class="skill-tag">SAFe</span>
+            <span class="skill-tag">Kanban</span>
+            <span class="skill-tag">Design Thinking</span>
+            <span class="skill-tag">BPMN</span>
+            <span class="skill-tag">AI &amp; Agentic Systems</span>
+          </div>
+        </div>
 
-  <!-- Category 5: Methodologies -->
-  <div class="skill-category">
-    <h4>Methodologies</h4>
-    <ul>
-      <li>Agile / Scrum</li>
-      <li>SAFe</li>
-      <li>Kanban</li>
-      <li>Design Thinking</li>
-      <li>BPMN</li>
-      <li>AI &amp; Agentic Systems</li>
-    </ul>
-  </div>
+        <!-- Category 6: Certifications -->
+        <div class="skill-category">
+          <h4>Certifications</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Salesforce Admin</span>
+            <span class="skill-tag">Salesforce Sales Cloud</span>
+            <span class="skill-tag">Salesforce Service Cloud</span>
+            <span class="skill-tag">Salesforce CPQ</span>
+            <span class="skill-tag">SAFe Agile</span>
+            <span class="skill-tag">SAFe PO/PM</span>
+            <span class="skill-tag">ISB Product Management</span>
+          </div>
+        </div>
 
-  <!-- Category 6: Certifications -->
-  <div class="skill-category">
-    <h4>Certifications</h4>
-    <ul>
-      <li>Salesforce Admin</li>
-      <li>Salesforce Sales Cloud</li>
-      <li>Salesforce Service Cloud</li>
-      <li>Salesforce CPQ</li>
-      <li>SAFe Agile</li>
-      <li>SAFe PO/PM</li>
-      <li>ISB Product Management</li>
-    </ul>
-  </div>
+      </div><!-- end skills-grid -->
+    </div><!-- end section-inner -->
+  </section>
+  <!-- END SECTION 3: SKILLS -->
 
-</div>
-<!-- ===== END SKILLS GRID ===== -->
-<!-- ============================================================
-       PORTFOLIO
+  <!-- ============================================================
+       SECTION 4: PORTFOLIO
   ============================================================ -->
   <section id="portfolio">
     <div class="section-inner">
@@ -792,89 +784,88 @@
 
       <div class="portfolio-grid">
 
-        <!-- PROJECT CARD 1 — REPLACE with your first real project -->
+        <!-- PROJECT CARD 1 — placeholder, to be replaced with real project -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">Digital Transformation</span>
-            <h3>Customer Onboarding Redesign</h3>
+            <span class="card-tag">AI &amp; CRM Innovation</span>
+            <h3>Agentic AI &amp; CRM Transformation</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> Lead BA / PO</span>
-              <span class="meta-item"><strong>Industry:</strong> Fintech</span>
+              <span class="meta-item"><strong>Role:</strong> Senior BA / AI Initiative Lead</span>
+              <span class="meta-item"><strong>Company:</strong> Quickbase</span>
             </div>
             <p class="card-problem">
-              A legacy onboarding flow was causing a 42% drop-off rate and 3-day average
-              completion time, creating significant customer acquisition costs and poor first impressions.
+              Quickbase needed to modernise its inbound lead engine and reduce customer churn —
+              two mission-critical priorities with no unified systems strategy in place.
             </p>
             <div class="card-outcome">
-              ✦ Reduced onboarding time from 3 days to 4 hours — a 94% improvement — by leading
-              discovery sessions and rebuilding the end-to-end user journey.
+              ✦ Led Agentic AI implementation generating ~$1M in influenced pipeline and
+              orchestrated Salesforce–Gainsight workflows contributing to ~$1.5M in churn reduction.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a><!-- REPLACE with real link -->
+            <a href="#" class="card-link">View Case Study →</a>
           </div>
         </div>
 
-        <!-- PROJECT CARD 2 — REPLACE with your second real project -->
+        <!-- PROJECT CARD 2 — placeholder, to be replaced with real project -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">Data & Reporting</span>
-            <h3>Executive Dashboard Initiative</h3>
+            <span class="card-tag">CPQ &amp; Release Delivery</span>
+            <h3>Enterprise CPQ Release Programme</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> Product Owner</span>
-              <span class="meta-item"><strong>Industry:</strong> Healthcare</span>
+              <span class="meta-item"><strong>Role:</strong> Business Analyst II</span>
+              <span class="meta-item"><strong>Company:</strong> VMware</span>
             </div>
             <p class="card-problem">
-              Senior leadership had no single source of truth for operational KPIs, relying on
-              weekly PowerPoints stitched together from 6 different teams — consuming 12+ hours
-              of analyst time every Friday.
+              VMware's CPQ platform required continuous high-velocity delivery across 7 SaaS
+              product lines — with a 27-member cross-functional team and quarterly release pressure.
             </p>
             <div class="card-outcome">
-              ✦ Delivered a real-time Power BI dashboard, reclaiming 600+ analyst hours per year
-              and enabling data-driven decisions at board level.
+              ✦ Managed 8 quarterly + 16 monthly releases and enabled 92+ CPQ SKUs across
+              vSphere+, vSAN+, NSX and other product lines in under 2 years.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a><!-- REPLACE with real link -->
+            <a href="#" class="card-link">View Case Study →</a>
           </div>
         </div>
 
-        <!-- PROJECT CARD 3 — REPLACE with your third real project -->
+        <!-- PROJECT CARD 3 — placeholder, to be replaced with real project -->
         <div class="project-card">
           <div class="card-header">
-            <span class="card-tag">Agile Transformation</span>
-            <h3>Squad Model Implementation</h3>
+            <span class="card-tag">CRM Migration</span>
+            <h3>SAP CRM → Salesforce Migration</h3>
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="meta-item"><strong>Role:</strong> BA &amp; Scrum Facilitator</span>
-              <span class="meta-item"><strong>Industry:</strong> Retail</span>
+              <span class="meta-item"><strong>Role:</strong> SFDC BA &amp; CPQ Functional Lead</span>
+              <span class="meta-item"><strong>Client:</strong> Nokia (via Accenture)</span>
             </div>
             <p class="card-problem">
-              A 40-person engineering department was running waterfall delivery with 6-month release
-              cycles, struggling to respond to market changes and accumulating a backlog of
-              business-critical features.
+              Nokia needed a full migration from SAP CRM to Salesforce — spanning Sales Cloud,
+              Service Cloud, and CPQ — across multiple business units with complex quoting requirements.
             </p>
             <div class="card-outcome">
-              ✦ Led the transition to squad-based agile delivery, reducing average feature
-              cycle time from 6 months to 3 weeks across 4 product teams.
+              ✦ Delivered end-to-end CRM setup, 4 quoting implementations, and cross-BU alignment —
+              recognised with the Nokia Client Excellence Award at GA launch in Germany.
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link">View Case Study →</a><!-- REPLACE with real link -->
+            <a href="#" class="card-link">View Case Study →</a>
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- end portfolio-grid -->
+    </div><!-- end section-inner -->
   </section>
+  <!-- END SECTION 4: PORTFOLIO -->
 
   <!-- ============================================================
-       CONTACT
+       SECTION 5: CONTACT
   ============================================================ -->
   <section id="contact">
     <div class="section-inner">
@@ -887,26 +878,27 @@
       </p>
 
       <div class="contact-links">
-        <a href="mailto:bsahely.work@gmail.com" class="contact-btn email">
+        <a href="mailto:bsahely@gmail.com" class="contact-btn email">
           ✉ Send an Email
         </a>
-        <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="contact-btn linkedin">
+        <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="contact-btn social">
           in LinkedIn
         </a>
-        <a href="https://github.com/bsahely" target="_blank" class="contact-btn github">
+        <a href="https://github.com/bsahely" target="_blank" class="contact-btn social">
           ⌥ GitHub
         </a>
-        <a href="https://medium.com/@sahelybanerjee" target="_blank" class="contact-btn linkedin">
+        <a href="https://medium.com/@sahelybanerjee" target="_blank" class="contact-btn social">
           ✍ Medium
         </a>
       </div>
 
-      <!-- REPLACE: resume.pdf with your actual resume file name -->
+      <!-- Upload resume.pdf to your repo root for this link to work -->
       <p class="resume-prompt">
         Prefer a document? <a href="resume.pdf" download>Download my resume (PDF)</a>
       </p>
-    </div>
+    </div><!-- end section-inner -->
   </section>
+  <!-- END SECTION 5: CONTACT -->
 
   <!-- ============================================================
        FOOTER
@@ -919,7 +911,7 @@
        JAVASCRIPT — Mobile nav toggle
   ============================================================ -->
   <script>
-    // Hamburger menu for mobile screens
+    // Hamburger menu toggle for mobile screens
     const hamburger = document.querySelector('.hamburger');
     const navLinks  = document.querySelector('.nav-links');
 
