@@ -938,7 +938,7 @@
         <span class="hero-tag">RevOps · Salesforce · BA/PO</span>
         <h1>Hi, I'm <span>Sahely Banerjee</span>.<br/>I turn complexity<br/>into clarity.</h1>
         <p class="hero-subtitle">
-          Senior Technical BA & RevOps PO ~ also I config CPQ, fix Salesforce Flows,
+          Senior Technical BA & RevOps PO — I config CPQ, fix Salesforce Flows,
           debug invoice sync failures at 2am, and ship things that move the needle.
         </p>
         <div class="hero-cta">
@@ -979,16 +979,12 @@
         <div class="hero-tags-row">
           <span class="hero-mini-tag">Salesforce</span>
           <span class="hero-mini-tag">CPQ</span>
-          <span class="hero-mini-tag">Billing Platform</span>
           <span class="hero-mini-tag">Workato</span>
           <span class="hero-mini-tag">Snowflake</span>
-          <span class="hero-mini-tag">Agentic AI</span>
-          <span class="hero-mini-tag">Shipped Bots</span>
           <span class="hero-mini-tag">Gainsight</span>
+          <span class="hero-mini-tag">Agentic AI</span>
           <span class="hero-mini-tag">Gong</span>
           <span class="hero-mini-tag">Zoominfo</span>
-          <span class="hero-mini-tag">Ringlead</span>
-          <span class="hero-mini-tag">Wireframes</span>
         </div>
 
       </div><!-- end hero-panel -->
@@ -1027,7 +1023,6 @@
               <span class="industry-tag">Software & IT</span>
               <span class="industry-tag">SaaS</span>
               <span class="industry-tag">Fintech</span>
-              <span class="industry-tag">No-Code, Low-Code</span>
             </div>
           </div>
 
@@ -1117,12 +1112,12 @@
           <div class="skill-tags">
             <span class="skill-tag">BRD / FRD Writing</span>
             <span class="skill-tag">Fit-Gap Analysis</span>
-            <span class="skill-tag">M&amp;A Discovery</span>
+            <span class="skill-tag">UAT Management</span>
             <span class="skill-tag">Process Improvement</span>
             <span class="skill-tag">Enterprise Architecture</span>
             <span class="skill-tag">Contract Lifecycle Mgmt</span>
-            <span class="skill-tag">Release &amp; Delivery Mgmt</span>            
-            <span class="skill-tag">UAT Management</span>
+            <span class="skill-tag">Release &amp; Delivery Mgmt</span>
+            <span class="skill-tag">M&amp;A Discovery</span>
           </div>
         </div>
 
@@ -1151,7 +1146,7 @@
             <span class="skill-tag">Agentforce</span>
             <span class="skill-tag">Data Cloud</span>
             <span class="skill-tag">Gainsight</span>
-            <span class="skill-tag">CLM</span>
+            <span class="skill-tag">Intelagree</span>
             <span class="skill-tag">RingLead / Zoominfo</span>
           </div>
         </div>
@@ -1163,11 +1158,11 @@
             <span class="skill-tag">Jira</span>
             <span class="skill-tag">Workato</span>
             <span class="skill-tag">Quickbase</span>
-            <span class="skill-tag">Lucidchart/Figma</span>
+            <span class="skill-tag">Lucidchart</span>
             <span class="skill-tag">Power BI</span>
             <span class="skill-tag">Snowflake</span>
             <span class="skill-tag">Gong</span>
-            <span class="skill-tag">AI &amp; Agentic Systems</span>
+            <span class="skill-tag">Miro / Figma</span>
           </div>
         </div>
 
@@ -1177,10 +1172,10 @@
           <div class="skill-tags">
             <span class="skill-tag">Agile / Scrum</span>
             <span class="skill-tag">SAFe</span>
+            <span class="skill-tag">Kanban</span>
             <span class="skill-tag">Design Thinking</span>
-            <span class="skill-tag">SWOT Analysis</span>
-            <span class="skill-tag">DevOps</span>
-            <span class="skill-tag">Data Modelling</span>
+            <span class="skill-tag">BPMN</span>
+            <span class="skill-tag">AI &amp; Agentic Systems</span>
           </div>
         </div>
 
@@ -1231,12 +1226,12 @@
             <p class="card-problem">
               Revenue, CS, and Finance teams operated from disconnected data sources —
               ARR tracking, churn calculations, and bookings forecasts lived in separate
-              systems with no single source of truth, often non-aligned making cross-functional decisions slow and unreliable.
+              systems with no single source of truth, making cross-functional decisions slow and unreliable.
             </p>
             <div class="card-outcome">
-              ✦ Reformulated financial metrics like ARR, Churn, Forecasts in Salesforce and integrated across Snowflake, and Power BI 
-              into a unified RevOps reporting layer — enabling real-time ARR tracking, bookings forecasting, churn analysis, and
-              Rip-and-Replace modelling for the business.
+              ✦ Integrated Salesforce, Snowflake, and Power BI into a unified RevOps
+              reporting layer — enabling real-time ARR tracking, churn analysis,
+              Rip-and-Replace modelling, and bookings forecasting across the business.
             </div>
           </div>
           <div class="card-footer">
@@ -1366,7 +1361,8 @@
       </p>
 
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#620011030a070e1b4c150d100922050f030b0e4c010d0f" class="contact-btn email">
+        <!-- Email button — href set by JS below so Cloudflare cannot obfuscate it -->
+        <a id="email-btn" href="#" class="contact-btn email">
           ✉ Send an Email
         </a>
         <a href="https://www.linkedin.com/in/sahely-b-654b4666/" target="_blank" class="contact-btn social">
@@ -1396,37 +1392,54 @@
   <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ── HAMBURGER MENU — mobile nav toggle ───────────────────────
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks  = document.querySelector('.nav-links');
+  <script>
+    // ── EMAIL LINK — assembled by JS so Cloudflare cannot obfuscate it ──
+    // Cloudflare scans HTML for mailto: and rewrites it to a broken
+    // encoded URL. Building the address in JS hides it from the scanner.
+    (function() {
+      var btn = document.getElementById('email-btn');
+      if (btn) {
+        btn.href = 'mailto:' + 'bsahely.work' + '@' + 'gmail.com';
+      }
+    })();
 
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.style.display === 'flex';
-      navLinks.style.display = isOpen ? 'none' : 'flex';
+    // ── HAMBURGER MENU — mobile nav toggle ───────────────────────
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks  = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', function() {
+      var isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display       = isOpen ? 'none' : 'flex';
       navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '64px';
-      navLinks.style.right = '0';
-      navLinks.style.left = '0';
-      navLinks.style.background = 'rgba(26,32,44,0.98)';
-      navLinks.style.padding = '1.5rem 2rem';
-      navLinks.style.gap = '1.25rem';
+      navLinks.style.position      = 'absolute';
+      navLinks.style.top           = '64px';
+      navLinks.style.right         = '0';
+      navLinks.style.left          = '0';
+      navLinks.style.background    = 'rgba(26,32,44,0.98)';
+      navLinks.style.padding       = '1.5rem 2rem';
+      navLinks.style.gap           = '1.25rem';
     });
 
-    // ── COLLAPSIBLE PROJECT CARDS — accordion behaviour ───────────
-    const toggleBtns = document.querySelectorAll('.card-toggle');
+    // ── COLLAPSIBLE PROJECT CARDS — independent toggles ───────────
+    // Each card opens and closes on its own — all 3 can be open together.
+    var toggleBtns = document.querySelectorAll('.card-toggle');
 
-    toggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card   = btn.closest('.project-card');
-        const isOpen = card.classList.contains('is-open');
+    toggleBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card   = btn.closest('.project-card');
+        var isOpen = card.classList.contains('is-open');
 
-        // Close all cards first
-        document.querySelectorAll('.project-card').forEach(c => {
-          c.classList.remove('is-open');
-          c.querySelector('.card-toggle').setAttribute('aria-expanded', 'false');
-        });
+        // Simply flip this card — don't touch any other card
+        if (isOpen) {
+          card.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          card.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 
-        // If this card was closed, open it
-        if (!isOpen)
+</body>
+</html>
